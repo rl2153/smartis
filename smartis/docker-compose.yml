@@ -1,0 +1,31 @@
+
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres
+    environment:
+      POSTGRES_USER: quarkus
+      POSTGRES_PASSWORD: quarkus
+      POSTGRES_DB: quarkus_db
+    ports:
+      - "5432:5432"  # Expose PostgreSQL port
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # Persistent volume for data
+
+  quarkus:
+    image: smartis:latest  # Name of the Quarkus application image
+    container_name: quarkus-app
+    environment:
+      QUARKUS_DATASOURCE_DB_KIND: postgresql
+      QUARKUS_DATASOURCE_USERNAME: quarkus
+      QUARKUS_DATASOURCE_PASSWORD: quarkus
+      QUARKUS_DATASOURCE_JDBC_URL: jdbc:postgresql://postgres:5432/quarkus_db
+      QUARKUS_PROFILE: dev
+    ports:
+      - "8080:8080"  # Expose Quarkus application port
+    depends_on:
+      - postgres  # Ensure Quarkus waits for PostgreSQL to be ready
+
+volumes:
+  postgres_data:  # Define persistent volume for PostgreSQL
