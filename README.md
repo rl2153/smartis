@@ -3,15 +3,15 @@
 ## koraki:
 1. zapakiramo quarkus aplikacijo v jar:
    
-mvn clean package 
+``mvn clean package``
 
 2. zgradimo docker image (v tem primeru je smartis ime slike - ime mora biti enako kot v docker-compose.yml datoteki)
    
-docker build -f ./src/main/docker/Dockerfile.jvm -t smartis .
+``docker build -f ./src/main/docker/Dockerfile.jvm -t smartis .``
 
 3. pozenemo docker-compose.yml datoteko z ukazom:
    
-docker-compose up --build
+``docker-compose up --build``
 
 4. aplikacije je dostopna na povezavi:
    
@@ -21,24 +21,19 @@ http://localhost:8080/q/graphql-ui
 
 ## primeri GraphQl poizvedb:
 
-- Get a single building by ID
-
+Get a single building by ID
+```
 query {
-
   building(id: 1) {
-  
     id
-    
     name
-    
-    location
-    
+    location 
   }
-  
 }
+```
 
-# Get list of buildings
-
+Get list of buildings
+```
 query {
   buildings {
     id
@@ -46,9 +41,10 @@ query {
     location
   }
 }
+```
 
-# Get a single device by ID
-
+Get a single device by ID
+```
 query {
   device(id: 1) {
     id
@@ -56,9 +52,10 @@ query {
     type
   }
 }
+```
 
-# Get paginated list of devices
-
+Get paginated list of devices
+```
 query {
   devices(page: 0, size: 3) {
     id
@@ -66,9 +63,10 @@ query {
     type
   }
 }
+```
 
-# Get a single deviceBuilding by ID
-
+Get a single deviceBuilding by ID
+```
 query {
   deviceBuilding(id: 1) {
     id
@@ -83,9 +81,10 @@ query {
     }
   }
 }
+```
 
-# Get list of deviceBuildings
-
+Get list of deviceBuildings
+```
 query {
   deviceBuildings {
     id
@@ -100,9 +99,10 @@ query {
     }
   }
 }
+```
 
-# Get a single measurement by ID
-
+Get a single measurement by ID
+```
 query {
   measurement(id: 1) {
     id
@@ -118,9 +118,10 @@ query {
     }
   }
 }
+```
 
-# Get list of measurements
-
+Get list of measurements
+```
 query {
   measurements(page: 0, size: 5) {
     id
@@ -136,8 +137,10 @@ query {
     }
   }
 }
+```
 
-# Create a building
+Create a building
+```
 mutation {
   createBuilding(name: "Building A", location: "Downtown") {
     id
@@ -145,8 +148,10 @@ mutation {
     location
   }
 }
+```
 
-# Update a building
+Update a building
+```
 mutation {
   updateBuilding(id: 1, name: "Updated Building", location: "Midtown") {
     id
@@ -154,13 +159,17 @@ mutation {
     location
   }
 }
+```
 
-# Delete a building
+Delete a building
+```
 mutation {
   deleteBuilding(id: 1)
 }
+```
 
-# Create a device
+Create a device
+```
 mutation {
   createDevice(manufacturer: "Siemens", type: SENSOR) {
     id
@@ -168,8 +177,10 @@ mutation {
     type
   }
 }
+```
 
-# Update a device
+Update a device
+```
 mutation {
   updateDevice(id: 1, manufacturer: "Bosch", type: ACTUATOR) {
     id
@@ -177,26 +188,34 @@ mutation {
     type
   }
 }
+```
 
-# Delete a device
+Delete a device
+```
 mutation {
   deleteDevice(id: 1)
 }
+```
 
-# Create a deviceBuilding connection
+Create a deviceBuilding connection
+```
 mutation {
   createDeviceBuilding(deviceId: 1, buildingId: 2, installedSince: "2024-01-01T00:00:00Z") {
     id
     installedSince
   }
 }
+```
 
-# Delete a deviceBuilding
+Delete a deviceBuilding
+```
 mutation {
   deleteDeviceBuilding(id: 1)
 }
+```
 
-# Create a measurement
+Create a measurement
+```
 mutation {
   createMeasurement(
     device: { id: 1 }
@@ -208,8 +227,10 @@ mutation {
     energyKwh
   }
 }
+```
 
-# Update a measurement
+Update a measurement
+```
 mutation {
   updateMeasurement(
     id: 1
@@ -222,11 +243,13 @@ mutation {
     energyKwh
   }
 }
+```
 
-# Delete a measurement
+Delete a measurement
+```
 mutation {
   deleteMeasurement(id: 1)
 }
-
+```
 
 
