@@ -21,14 +21,20 @@ http://localhost:8080/q/graphql-ui
 
 ## primeri GraphQl poizvedb:
 
-# Get a single building by ID
+- Get a single building by ID
 
 query {
+
   building(id: 1) {
+  
     id
+    
     name
+    
     location
+    
   }
+  
 }
 
 # Get list of buildings
