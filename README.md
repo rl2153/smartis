@@ -21,7 +21,7 @@ http://localhost:8080/q/graphql-ui
 
 ## primeri GraphQl poizvedb:
 
-Get a single building by ID
+Get a single building by ID (you can change the id)
 ```
 query {
   building(id: 1) {
@@ -32,7 +32,18 @@ query {
 }
 ```
 
-Get list of buildings
+Get paginated list of buildings
+```
+query {
+  buildings (page: 0, size: 3){
+    id
+    name
+    location
+  }
+}
+```
+
+Get list of all buildings
 ```
 query {
   buildings {
@@ -65,10 +76,39 @@ query {
 }
 ```
 
+Get list of devices
+```
+query {
+  devices {
+    id
+    manufacturer
+    type
+  }
+}
+```
+
 Get a single deviceBuilding by ID
 ```
 query {
   deviceBuilding(id: 1) {
+    id
+    installedSince
+    device {
+      id
+      manufacturer
+    }
+    building {
+      id
+      name
+    }
+  }
+}
+```
+
+Get paginated list of deviceBuildings
+```
+query {
+  deviceBuildings (page: 0, size: 4){
     id
     installedSince
     device {
@@ -120,7 +160,7 @@ query {
 }
 ```
 
-Get list of measurements
+Get paginated list of measurements
 ```
 query {
   measurements(page: 0, size: 5) {
@@ -138,6 +178,27 @@ query {
   }
 }
 ```
+
+Get list of measurements
+```
+query {
+  measurements {
+    id
+    timestamp
+    energyKwh
+    device {
+      id
+      manufacturer
+    }
+    building {
+      id
+      name
+    }
+  }
+}
+```
+
+## mutations
 
 Create a building
 ```
@@ -171,7 +232,7 @@ mutation {
 Create a device
 ```
 mutation {
-  createDevice(manufacturer: "Siemens", type: SENSOR) {
+  createDevice(manufacturer: "Siemens", type: SOLAR) {
     id
     manufacturer
     type
@@ -182,7 +243,7 @@ mutation {
 Update a device
 ```
 mutation {
-  updateDevice(id: 1, manufacturer: "Bosch", type: ACTUATOR) {
+  updateDevice(id: 1, manufacturer: "Samsung", type: HVAC) {
     id
     manufacturer
     type
@@ -200,7 +261,7 @@ mutation {
 Create a deviceBuilding connection
 ```
 mutation {
-  createDeviceBuilding(deviceId: 1, buildingId: 2, installedSince: "2024-01-01T00:00:00Z") {
+  createDeviceBuilding(buildingId: 2, installedSince: "2024-01-01T00:00:00Z") {
     id
     installedSince
   }
