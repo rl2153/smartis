@@ -279,8 +279,8 @@ Create a measurement
 ```
 mutation {
   createMeasurement(
-    device: { id: 1 }
-    building: { id: 2 }
+    deviceId: 1
+    buildingId: 2
     timestamp: "2024-04-08T12:00:00Z"
     energyKwh: 12.5
   ) {
