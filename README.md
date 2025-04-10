@@ -203,7 +203,7 @@ query {
 Create a building
 ```
 mutation {
-  createBuilding(name: "Building A", location: "Downtown") {
+  createBuilding(name: "Building F", location: "Downtown") {
     id
     name
     location
