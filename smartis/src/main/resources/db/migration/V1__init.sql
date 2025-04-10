@@ -19,7 +19,7 @@ CREATE TABLE measurement (
     device_id BIGINT NOT NULL,
     building_id BIGINT NOT NULL,
     timestamp TIMESTAMP(6) WITH TIME ZONE NOT NULL,
-    energy_kwh NUMERIC(10, 2) NOT NULL,
+    energy_kwh FLOAT NOT NULL,
     CONSTRAINT fk_measurement_device FOREIGN KEY (device_id) REFERENCES device(id),
     CONSTRAINT fk_measurement_building FOREIGN KEY (building_id) REFERENCES building(id)
 );

@@ -49,6 +49,7 @@ public class DeviceResolver {
     }
 
     @Mutation
+    @Transactional
     public Device updateDevice(@Name("id") Long id,
                                @Name("manufacturer") String manufacturer,
                                @Name("type") DeviceType type) {
@@ -62,6 +63,7 @@ public class DeviceResolver {
     }
 
     @Mutation
+    @Transactional
     public Boolean deleteDevice(@Name("id") Long id) {
         return deviceRepo.deleteById(id);
     }

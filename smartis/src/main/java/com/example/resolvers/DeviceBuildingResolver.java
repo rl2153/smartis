@@ -48,8 +48,9 @@ public class DeviceBuildingResolver {
     }
 
     @Mutation
+    @Transactional
     public DeviceBuilding createDeviceBuilding(Long deviceId, Long buildingId, Instant installedSince) {
-
+        //System.out.println()
         Device device = deviceRepo.findById(deviceId);
         if (device == null) {
             throw new RuntimeException("Device not found");
@@ -70,6 +71,7 @@ public class DeviceBuildingResolver {
     }
 
     @Mutation
+    @Transactional
     public Boolean deleteDeviceBuilding(Long id) {
         return deviceBuildingRepo.deleteById(id);
     }

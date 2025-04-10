@@ -31,7 +31,7 @@ public class Building {
     @OneToMany(mappedBy = "building", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Measurement> measurements;
 
-    @OneToMany(mappedBy = "building")
+    @OneToMany(mappedBy = "building", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<DeviceBuilding> deviceBuildings;
 
     // Getterji in setterji

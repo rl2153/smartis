@@ -43,6 +43,7 @@ public class BuildingResolver {
     }
 
     @Mutation
+    @Transactional
     public Building updateBuilding(@Name("id") Long id,
                                    @Name("name") String name,
                                    @Name("location") String location) {
@@ -55,7 +56,9 @@ public class BuildingResolver {
         return building;
     }
 
+    
     @Mutation
+    @Transactional
     public Boolean deleteBuilding(@Name("id") Long id) {
         return buildingRepo.deleteById(id);
     }
