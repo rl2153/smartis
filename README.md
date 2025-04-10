@@ -295,7 +295,7 @@ Update a measurement
 mutation {
   updateMeasurement(
     id: 1
-    device: { id: 1 }
+    device: { id: 2 }
     building: { id: 2 }
     timestamp: "2024-04-08T14:00:00Z"
     energyKwh: 15.2
