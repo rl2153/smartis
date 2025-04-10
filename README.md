@@ -261,7 +261,7 @@ mutation {
 Create a deviceBuilding connection
 ```
 mutation {
-  createDeviceBuilding(buildingId: 2, installedSince: "2024-01-01T00:00:00Z") {
+  createDeviceBuilding(deviceId: 2, buildingId: 2, installedSince: "2024-01-01T00:00:00Z") {
     id
     installedSince
   }
